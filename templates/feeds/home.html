@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{%load static%}
+
+{% block title %}Feed{% endblock %}
+
+{% block content %}
+{% include "feeds/components/notifications/toast.html" %}
+
+<div class="row g-4">
+    <!-- Left Sidebar -->
+    <div class="col-lg-3 d-none d-lg-block">
+        {% include "feeds/components/sidebar/search.html" %}
+        {% include "feeds/components/sidebar/filters.html" %}
+        {% include "feeds/components/sidebar/suggested_users.html" %}
+    </div>
+
+    <!-- Main Feed -->
+    <div class="col-lg-6">
+        {% include "feeds/components/posts/create_post.html" %}
+        {% include "feeds/components/posts/posts_container.html" %}
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="col-lg-3 d-none d-lg-block">
+        {% include "feeds/components/sidebar/trending.html" %}
+    </div>
+</div>
+
+{% include "feeds/components/posts/post_template.html" %}
+{% include "feeds/components/comments/comment_template.html" %}
+{% include "feeds/components/modals/engagement_modal.html" %}
+{% include "feeds/components/modals/report_modal.html" %}
+{% include "feeds/components/modals/share_modal.html" %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="{% static 'js/feeds/api.js' %}"></script>
+<script src="{% static 'js/feeds/notifications.js' %}"></script>
+<script src="{% static 'js/feeds/posts.js' %}"></script>
+<script src="{% static 'js/feeds/comments.js' %}"></script>
+<script src="{% static 'js/feeds/sidebar.js' %}"></script>
+<script src="{% static 'js/feeds/modals.js' %}"></script>
+{% endblock %}
+
